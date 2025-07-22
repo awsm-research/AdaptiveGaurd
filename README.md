@@ -47,7 +47,7 @@ Follow the official installation guide from PyTorch:
 ## 2. Reproduce RQ1
 ### (RQ1) How effective is our AdaptiveGuard approach in identifying unknown jailbreak prompts?
 <p align="center">
-  <img src="./imgs/RQ1_ood_detection_performance.png" alt="RQ1 Results" style="width:100%; max-width:1000px;"/>
+  <img src="./imgs/RQ1_ood_detection_performance.png" alt="RQ1 Results" style="width:50%; max-width:1000px;"/>
 </p>
 
 TODO
