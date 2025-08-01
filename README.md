@@ -71,13 +71,28 @@ Before running experiments, prepare the attack data:
 
 This script combines various attack datasets for evaluation across different jailbreak methods.
 
+### Attack Types Used
+
+We evaluate AdaptiveGuard against 10 different jailbreak attack methods:
+
+- **AIM** (Always Intelligent and Machiavellian) [1]
+- **DAN** (Do Anything Now) [2]  
+- **Combination** (Prefix injection + Refusal Suppression) [3]
+- **Self Cipher** [4]
+- **Deep Inception** [5]
+- **Caesar Cipher** [4]
+- **Zulu** (Low-resource language attacks) [6]
+- **Base64** (Encoding-based attacks) [3]
+- **SmartGPT** [7]
+- **Code Chameleon** [8]
+
 ---
 
 ## 4. Reproduce RQ1
 ### (RQ1) How effective is our AdaptiveGuard approach in identifying unknown jailbreak prompts?
 
 <p align="center">
-  <img src="./imgs/RQ1_ood_detection_performance.png" alt="RQ1 Results" style="width:50%; max-width:1000px;"/>
+  <img src="./imgs/RQ1_F1.png" alt="RQ1 Results" style="width:50%; max-width:1000px;"/>
 </p>
 
 To reproduce RQ1 results, first train the AdaptiveGuard model, then run the out-of-distribution analysis:
@@ -97,25 +112,14 @@ To reproduce RQ1 results, first train the AdaptiveGuard model, then run the out-
 ./scripts/run_ood_analysis.sh
 ```
 
-This experiment evaluates AdaptiveGuard's energy-based detection capability on various attack types:
-- **AIM** 
-- **Base64** 
-- **Caesar cipher** 
-- **Code Chameleon** 
-- **Combination** 
-- **DAN** (Do Anything Now)
-- **Deep Inception** 
-- **Self-cipher**
-- **SmartGPT** 
-- **Zulu language** 
+This experiment evaluates AdaptiveGuard's energy-based detection capability on the 10 attack types listed above.
 
-
-Results will be saved in `ood_analysis_results/` directory.
+Results will be saved in `results/ood_analysis_results/` directory.
 
 ---
 
 ## 5. Reproduce RQ2
-### (RQ2) How effective is our AdaptiveGuard approach at defending against unknown jailbreak attacks when continuously updated through detected OOD prompts?
+### (RQ2) How quickly does our AdaptiveGuard approach adapt to unknown jailbreak attacks when continuously updated through detected OOD prompts??
 
 <p align="center">
   <img src="./imgs/RQ2_DSR_Comparison.png" alt="RQ2 Results" style="width:100%; max-width:1000px;"/>
@@ -208,8 +212,30 @@ Look for:
 
 --- -->
 
+---
+
 ## 7. Citation
 
 ```bibtex
 under review
 ```
+
+---
+
+## 8. References
+
+[1] Jailbreak Chat. "Jailbreak Chat Prompt." 2023. https://www.jailbreakchat.com/prompt/4f37a029-9dff-4862-b323-c96a5504de5d
+
+[2] Shen, X., Chen, Z., Backes, M., Shen, Y., & Zhang, Y. (2023). "Do anything now": Characterizing and evaluating in-the-wild jailbreak prompts on large language models. *arXiv preprint arXiv:2308.03825*.
+
+[3] Wei, A., Haghtalab, N., & Steinhardt, J. (2024). Jailbroken: How does llm safety training fail? *Advances in Neural Information Processing Systems*, 36.
+
+[4] Yuan, Y., Jiao, W., Wang, W., Huang, J. T., He, P., Shi, S., & Tu, Z. (2023). Gpt-4 is too smart to be safe: Stealthy chat with llms via cipher. *arXiv preprint arXiv:2308.06463*.
+
+[5] Li, X., Zhou, Z., Zhu, J., Yao, J., Liu, T., & Han, B. (2023). Deepinception: Hypnotize large language model to be jailbreaker. *arXiv preprint arXiv:2311.03191*.
+
+[6] Yong, Z. X., Menghini, C., & Bach, S. H. (2023). Low-resource languages jailbreak gpt-4. *arXiv preprint arXiv:2310.02446*.
+
+[7] Kang, D., Li, X., Stoica, I., Guestrin, C., Zaharia, M., & Hashimoto, T. (2024). Exploiting programmatic behavior of llms: Dual-use through standard security attacks. In *2024 IEEE Security and Privacy Workshops (SPW)* (pp. 132-143). IEEE.
+
+[8] Lv, H., Wang, X., Zhang, Y., Huang, C., Dou, S., Ye, J., Gui, T., Zhang, Q., & Huang, X. (2024). Codechameleon: Personalized encryption framework for jailbreaking large language models. *arXiv preprint arXiv:2402.16717*.
